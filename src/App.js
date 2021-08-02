@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { MarkedInput } from "./components/marked-input";
 import { Result } from "./components/result";
-import Test from "./components/test";
+import EditorContext from "./components/editorContext";
+import { useState } from "react";
 
 
 const AppContainer = styled.div`
@@ -27,16 +28,24 @@ const AppContainer = styled.div`
       `;
 
 function App() {
+
+    const [markdownText, setMarkdownText] = useState("");
+
+    const contextValue = {
+      markdownText, setMarkdownText
+    }; 
+
   return (
+    <EditorContext.Provider value={contextValue}>
     <AppContainer>
       <Title>Markdown Editor </Title>
-<Test />
       <EditorContainer> 
         <MarkedInput />
         <Result />
       </EditorContainer>
 
     </AppContainer>
+    </EditorContext.Provider>
   );
 }
 
