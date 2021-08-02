@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import ReactMarkdown from "react-markdown";
+import editorContext from "./editorContext";
 
 
 const Container = styled.div`
@@ -25,30 +26,17 @@ const Container = styled.div`
         font-size: 17px;
         `;
 
-        const markdown = `
-        # Header 1
-        ## Header 2
-      
-        _ italic _
-      
-        ** bold **
-      
-        <b> bold Html </b>
-        `;
 
         export function Result(props) {
+
+            const { markdownText } = useContext(editorContext);
 
             return(
                 <Container>
                     <Title>Converted Text</Title>
-                    <ResultArea>
-                        <ReactMarkdown>
-                        {markdown}
-                        </ReactMarkdown>
-
-                        <ReactMarkdown children={markdown} />
-                        
-                    </ResultArea>
+                        <ResultArea>
+                            <ReactMarkdown children={markdownText} />      
+                        </ResultArea>
 
                 </Container>
             )
