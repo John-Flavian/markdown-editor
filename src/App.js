@@ -14,18 +14,22 @@ const AppContainer = styled.div`
   align-items: center;
   `;
 
-  const Title = styled.div`
-    font-size: 25px;
-    font-weight: 700;
-    font-family: "Lato", sans-serif;
-    margin-bottom: 1em;
-    `;
+const Title = styled.h1`
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  margin-bottom: 1em;
+  `;
 
-    const EditorContainer = styled.div`
-      width: 100%;
-      height: 100%;
-      display: flex;
-      `;
+const EditorContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  `;
+
+const Footer = styled.div`
+  width: 100%;
+  bottom: 0;
+`
 
 function App() {
 
@@ -37,14 +41,22 @@ function App() {
 
   return (
     <EditorContext.Provider value={contextValue}>
-    <AppContainer>
-      <Title>Markdown Editor </Title>
-      <EditorContainer> 
-        <MarkedInput />
-        <Result />
-      </EditorContainer>
+      <AppContainer>
+        <Title>Markdown Editor </Title>
+        <EditorContainer> 
+          <MarkedInput />
+          <Result />
+        </EditorContainer>
 
-    </AppContainer>
+      </AppContainer>
+      <Footer>
+        <p>
+          <b> &copy; <a href="https://github.com/John-Flavian">John Flavian</a> 2020.</b>
+        </p>
+        <p>
+          View this code on <a href="https://github.com/John-Flavian/markdown-editor"> GitHub.</a>
+        </p>  
+      </Footer>
     </EditorContext.Provider>
   );
 }
